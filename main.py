@@ -14,7 +14,7 @@ def index():
 
 
 @app.route("/users")
-def users():
+def view_users():
     return render_template("user.html", users=users)
 
 
