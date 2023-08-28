@@ -32,7 +32,7 @@ def add_task():
 def add_user():
     name = request.form.get("user")
     users.append({"name":name})
-    return redirect(url_for('users'))
+    return redirect(url_for('view_users'))
 
 
 @app.route('/complete/<int:task_id>')
