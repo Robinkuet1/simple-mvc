@@ -10,7 +10,7 @@ users = []
 # view
 @app.route('/')
 def index():
-    return render_template('index.html', tasks=tasks)
+    return render_template('index.html', tasks=tasks, users=users)
 
 
 @app.route("/users")
