@@ -59,6 +59,23 @@ def remove_task(task_id):
             break
     return redirect(url_for('index'))
 
+@app.route('/edit/<int:task_id>', methods=['GET', 'POST'])
+def edit_task(task_id):
+    task_to_edit = next((task for task in tasks if task['id'] == task_id), None)
+
+    if request.method == 'POST':
+        new_title = request.form.get('title')
+        new_user = request.form.get('user')
+        for task in tasks:
+            if task['id'] == task_id:
+                task['title'] = new_title
+                task['user'] = new_user
+                break
+        return redirect(url_for('index'))
+    
+    return render_template('index.html', tasks=tasks, users=users, task_to_edit=task_to_edit)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

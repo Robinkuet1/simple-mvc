@@ -160,6 +160,33 @@
                                 window.location="{{ url_for('remove_task', task_id=task.id) }}"
                             })
                         </script>
+                        <button style="background-color: red;" type="submit" id="edit_task_{{ task.id }}">Task editieren</button>
+                        <script>
+                            document.getElementById("edit_task_{{ task.id }}").addEventListener("click", () => {
+                                const editDiv = document.getElementById("edit_div_{{ task.id }}");
+                                if (editDiv.style.display === "none" || editDiv.style.display === "") {
+                                    editDiv.style.display = "block";
+                                } else {
+                                    editDiv.style.display = "none";
+                                }
+                            });
+                        </script>
+                        <div id="edit_div_{{ task.id }}" style="display: none;">
+                            <form method="POST" action="{{ url_for('edit_task', task_id=task.id) }}">
+                                <label for="title">Neuer Titel:</label>
+                                <input type="text" name="title" placeholder="Neuer Titel..">
+                                <label for="user">Neuer Benutzer:</label>
+                                <select id="user" name="user" title="Dropdown">
+                                    <option disabled selected hidden>Choose User</option>
+                                    {% for user in users %}
+                                        <option value="{{ user.name }}">{{ user.name }}</option>
+                                    {% endfor %}
+                                </select>
+                                <button type="submit">Aktualisieren</button>
+                            </form>
+                        </div>
+                        
+                        
                 </span>
             </li>
             {% endfor %}
