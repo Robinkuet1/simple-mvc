@@ -78,16 +78,45 @@
       button[type="submit"]:hover {
           background-color: #0056b3;
       }
+
+      header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Navigationslinks im Header */
+        nav {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
   </style>
 </head>
 <body>
+
+  <header>
+    
+    <nav>
+        <a href="/">Tasks</a>
+        <a href="/users">Users</a>
+    </nav>
+</header>
+<h1>Task Manager</h1>
+
     <div class="container">
         <h1>Users</h1>
 
         <ul>
           {% for user in users %}
           <li>
-              <span>{{ user.title }}</span>
+              <span>{{ user.name }}</span>
           </li>
           {% endfor %}
       </ul>
