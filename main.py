@@ -27,6 +27,14 @@ def add_task():
     tasks.append(new_task)
     return redirect(url_for('index'))
 
+@app.route('/remove_user/<string:name>')
+def remove_task(name):
+    for user in users:
+        if user['name'] == name:
+            users.remove(user)
+            break
+    return redirect(url_for('view_users'))
+
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
