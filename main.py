@@ -43,6 +43,14 @@ def complete_task(task_id):
             break
     return redirect(url_for('index'))
 
+@app.route('/remove/<int:task_id>')
+def remove_task(task_id):
+    for task in tasks:
+        if task['id'] == task_id:
+            tasks.remove(task)
+            break
+    return redirect(url_for('index'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
