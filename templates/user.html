@@ -116,9 +116,17 @@
       {% for user in users %}
       <li>
         <span>{{ user.name }}</span>
+
+        <button style="background-color: red;" type="submit" id="remove_user_{{ user.name }}">user löschen</button>
+        <script>
+            document.getElementById("remove_user_{{ user.name }}").addEventListener("click", ()=>{
+                window.location="{{ url_for('remove_user', name=user.name) }}"
+            })
+        </script>
       </li>
       {% endfor %}
     </ul>
+    
 
     <h2>Neuen Benutzer hinzufügen</h2>
     <form method="POST" action="{{ url_for('add_user') }}">
@@ -126,6 +134,7 @@
       <input type="text" name="user" required>
       <button type="submit">Hinzufügen</button>
     </form>
+    
   </div>
 </body>
 </html>
