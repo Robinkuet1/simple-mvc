@@ -4,12 +4,17 @@ app = Flask(__name__)
 
 # model
 tasks = []
+users = []
 
 
 # view
 @app.route('/')
 def index():
     return render_template('index.html', tasks=tasks)
+
+@app.route("/users")
+def users():
+    return render_template("user.html", users=users)
 
 
 # controller
