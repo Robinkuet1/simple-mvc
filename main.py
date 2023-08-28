@@ -31,7 +31,7 @@ def add_task():
 @app.route('/add_user', methods=['POST'])
 def add_user():
     name = request.form.get("user")
-    users.append(name)
+    users.append({"name":name})
     return redirect(url_for('index'))
 
 
