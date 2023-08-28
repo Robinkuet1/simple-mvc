@@ -28,7 +28,7 @@ def add_task():
     return redirect(url_for('index'))
 
 @app.route('/remove_user/<string:name>')
-def remove_task(name):
+def remove_user(name):
     for user in users:
         if user['name'] == name:
             users.remove(user)
