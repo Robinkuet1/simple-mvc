@@ -10,7 +10,7 @@ users = []
 # view
 @app.route('/')
 def index():
-    return render_template('index.html', tasks=tasks)
+    return render_template('index.html', tasks=tasks, users=users)
 
 
 @app.route("/users")
@@ -40,6 +40,14 @@ def complete_task(task_id):
     for task in tasks:
         if task['id'] == task_id:
             task['completed'] = True
+            break
+    return redirect(url_for('index'))
+
+@app.route('/remove/<int:task_id>')
+def remove_task(task_id):
+    for task in tasks:
+        if task['id'] == task_id:
+            tasks.remove(task)
             break
     return redirect(url_for('index'))
 
