@@ -1,132 +1,131 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>User Manager</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-      body {
-          font-family: Arial, sans-serif;
-          margin: 0;
-          padding: 0;
-          background-color: #f7f7f7;
-      }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
 
-      .container {
-          max-width: 600px;
-          margin: 0 auto;
-          padding: 20px;
-          background-color: #ffffff;
-          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-      }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-      h1 {
-          text-align: center;
-          margin-bottom: 20px;
-      }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-      h2 {
-          margin-top: 20px;
-      }
+    h2 {
+      margin-top: 20px;
+    }
 
-      ul {
-          list-style-type: none;
-          padding: 0;
-      }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
 
-      li {
-          margin-bottom: 10px;
-          padding: 10px;
-          background-color: #f9f9f9;
-          border-radius: 5px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-      }
+    li {
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-      .completed {
-          color: #28a745;
-          font-weight: bold;
-      }
+    .completed {
+      color: #28a745;
+      font-weight: bold;
+    }
 
-      form {
-          margin-top: 20px;
-      }
+    form {
+      margin-top: 20px;
+    }
 
-      label {
-          display: block;
-          margin-bottom: 5px;
-          font-weight: bold;
-      }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
 
-      input[type="text"] {
-          width: 100%;
-          padding: 10px;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-          background-color: #f5f5f5;
-      }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f5f5f5;
+    }
 
-      button[type="submit"] {
-          padding: 10px 20px;
-          background-color: #007bff;
-          color: #fff;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-      }
+    button[type="submit"] {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
 
-      button[type="submit"]:hover {
-          background-color: #0056b3;
-      }
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
 
-      header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-        }
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
 
-        /* Navigationslinks im Header */
-        nav {
-            display: inline-block;
-            margin-top: 10px;
-        }
+    nav {
+      display: inline-block;
+      margin-top: 10px;
+    }
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-        }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
   </style>
 </head>
+
 <body>
 
   <header>
-    
+
     <nav>
-        <a href="/">Tasks</a>
-        <a href="/users">Users</a>
+      <a href="/">Tasks</a>
+      <a href="/users">Users</a>
     </nav>
-</header>
-<h1>Task Manager</h1>
+  </header>
 
-    <div class="container">
-        <h1>Users</h1>
+  <div class="container">
+    <h1>Users</h1>
 
-        <ul>
-          {% for user in users %}
-          <li>
-              <span>{{ user.name }}</span>
-          </li>
-          {% endfor %}
-      </ul>
+    <ul>
+      {% for user in users %}
+      <li>
+        <span>{{ user.name }}</span>
+      </li>
+      {% endfor %}
+    </ul>
 
-        <h2>Neuen Benutzer hinzufügen</h2>
-        <form method="POST" action="{{ url_for('add_user') }}">
-            <label for="user">Benutzername:</label>
-            <input type="text" name="user" required>
-            <button type="submit">Hinzufügen</button>
-        </form>
-    </div>
+    <h2>Neuen Benutzer hinzufügen</h2>
+    <form method="POST" action="{{ url_for('add_user') }}">
+      <label for="user">Benutzername:</label>
+      <input type="text" name="user" required>
+      <button type="submit">Hinzufügen</button>
+    </form>
+  </div>
 </body>
 </html>
