@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Task Manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,7 +70,7 @@
         button[type="submit"] {
             padding: 10px 20px;
             margin-top: 10px;
-            background-color: #007bff;
+            background-color: #006ee5 ;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -78,7 +78,7 @@
         }
 
         button[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: #006ee5;
         }
 
         select {
@@ -170,7 +170,7 @@
             <label for="title">Titel:</label>
             <div style="display: flex; justify-content: stretch;">
                 <input type="text" name="title" placeholder="Hausaufgaben..." required>
-                <select id="user" name="user">
+                <select id="user" name="user" title="Dropdown">
                     <option disabled selected hidden>Choose User</option>
                     {% for user in users %}
                         <option value="{{ user.name }}">{{ user.name }}</option>
