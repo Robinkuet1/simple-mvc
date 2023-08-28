@@ -61,6 +61,7 @@
         input[type="text"] {
             width: 100%;
             padding: 10px;
+            padding-right: 0px;
             border: 1px solid #ccc;
             border-radius: 5px;
             background-color: #f5f5f5;
@@ -68,6 +69,7 @@
 
         button[type="submit"] {
             padding: 10px 20px;
+            margin-top: 10px;
             background-color: #007bff;
             color: #fff;
             border: none;
@@ -77,6 +79,10 @@
 
         button[type="submit"]:hover {
             background-color: #0056b3;
+        }
+
+        select {
+            padding: 15px 15px 15px 15px;
         }
     </style>
 </head>
@@ -93,8 +99,20 @@
                     {% if task.completed %}
                         <span class="completed">(abgeschlossen)</span>
                     {% else %}
-                        <a href="{{ url_for('complete_task', task_id=task.id) }}">Als abgeschlossen markieren</a>
+                        <button type="submit" id="task_{{ task.id }}">Als abgeschlossen markieren</button>
+                        <script>
+                            document.getElementById("task_{{ task.id }}").addEventListener("click", ()=>{
+                                window.location="{{ url_for('complete_task', task_id=task.id) }}"
+                            })
+                        </script>
+
                     {% endif %}
+                    <button style="background-color: red;" type="submit" id="remove_task_{{ task.id }}">Task löschen</button>
+                        <script>
+                            document.getElementById("remove_task_{{ task.id }}").addEventListener("click", ()=>{
+                                window.location="{{ url_for('remove_task', task_id=task.id) }}"
+                            })
+                        </script>
                 </span>
             </li>
             {% endfor %}
@@ -103,7 +121,12 @@
         <h2>Neue Aufgabe hinzufügen</h2>
         <form method="POST" action="{{ url_for('add_task') }}">
             <label for="title">Titel:</label>
-            <input type="text" name="title" required>
+            <input type="text" name="title" placeholder="Hausaufgaben..." required>
+            <select>
+                {% for user in users %}
+                    <option>{{ user.name }}</option>
+                {% endfor %}
+            </select>
             <button type="submit">Hinzufügen</button>
         </form>
     </div>
