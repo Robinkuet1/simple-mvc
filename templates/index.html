@@ -160,7 +160,7 @@
                                 window.location="{{ url_for('remove_task', task_id=task.id) }}"
                             })
                         </script>
-                        <button style="background-color: red;" type="submit" id="edit_task_{{ task.id }}">Task editieren</button>
+                        <button style="background-color: rgb(35, 150, 54);" type="submit" id="edit_task_{{ task.id }}">Task editieren</button>
                         <script>
                             document.getElementById("edit_task_{{ task.id }}").addEventListener("click", () => {
                                 const editDiv = document.getElementById("edit_div_{{ task.id }}");
